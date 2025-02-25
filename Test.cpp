@@ -12,7 +12,11 @@ using namespace std;
 
 
 int main() {
-    string str = "abc";
-    str.insert(3, "def");
-    cout << str << endl;
+    vector<string> abc(5);
+    int n=5;
+    for(int i=0; i<n; i++) {
+        abc.push_back(to_string(i));
+    }
+
+    cout << abc.size() << endl;
 }
