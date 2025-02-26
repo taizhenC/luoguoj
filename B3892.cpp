@@ -1,35 +1,33 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <set>
 using namespace std;
 
 int main() {
   int n,Q,n_;
   cin >> n >> Q;
   n_ = n;
-  vector<int> sol;
+  set<int> sol;
+
   while(n--){
     string function;
     cin >> function;
+
     int mark = function.find("x");
+    int mark_ = function.find("=");
+
     string x = function.substr(0,mark);
     int x_ = stoi(x);
 
-    mark = function.find("=");
-    string b = function.substr(mark+1);
+    string m = function.substr(mark + 1, mark_ - mark - 1);
+    int m_ = stoi(m);
+    
+    string b = function.substr(mark_+1);
     int b_ = stoi(b);
 
-    string m;
-    if(function.find("-") != std::string::npos) {
-      m = function.substr(mark-2,2);
-      stoi(m);
-    } else {
-      m = function.substr(mark-1,1);
-      stoi(m);
-    }
-    int m_ = stoi(m);
-    x_ = (b_-m_)/x_;
-    sol.push_back(x_);
+    int sol_ = (b_-m_)/x_;
+    sol.insert(sol_);
   }
 
   vector<int> record;
@@ -37,10 +35,9 @@ int main() {
     int l,r;
     cin >> l >> r;
     int cnt = 0;
-    for(int i=0; i<n_; i++) {
-      if(sol[i] >= l && sol[i] <= r) {
-        cnt ++;
-        r--;
+    for(auto& x : sol) {
+      if(x >= l && x <= r) {
+        cnt++;
       }
     }
     record.push_back(cnt);
@@ -48,5 +45,7 @@ int main() {
 
   for(auto&x : record) cout << x << endl;
   return 0;
+
+
 
 }
