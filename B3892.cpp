@@ -31,7 +31,7 @@ int main() {
     x_ = (b_-m_)/x_;
     sol.push_back(x_);
   }
-  
+
   vector<int> record;
   while(Q--) {
     int l,r;
@@ -40,11 +40,13 @@ int main() {
     for(int i=0; i<n_; i++) {
       if(sol[i] >= l && sol[i] <= r) {
         cnt ++;
+        r--;
       }
     }
     record.push_back(cnt);
   }
 
-  for(auto&x : record) cout << x;
+  for(auto&x : record) cout << x << endl;
   return 0;
+
 }
