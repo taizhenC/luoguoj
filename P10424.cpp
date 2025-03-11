@@ -9,7 +9,7 @@ bool goodnum(int n) {
   for(int i=1; n; i++, n/=10) {
     if(n%2 != i%2) return false;
   }
-  return true;
+  return true; 
 }
 
 
