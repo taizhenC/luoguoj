@@ -2,7 +2,55 @@
 #include <vector>
 using namespace std;
 
+bool coincheck (int money) {
+    
+}
 
+
+int main() {
+    int n;
+    cin >> n;
+    vector<int> wallet(n);
+
+    for(auto& x: wallet) cin >> x;
+
+    for(int i=0; i<n; i++) {
+
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 int main() {
     int n;
     cin >> n;
@@ -10,7 +58,7 @@ int main() {
     vector<long long> coin(n);
     for(auto& x: coin) cin >> x;
 
-    /*
+    
     // vector<int> p1,p2;
     vector<vector<long long>> players(2);
     int currentPlayer = 0;
@@ -46,111 +94,7 @@ int main() {
         cout << sum << ' ';
     }
     cout << endl;
-    */
-        
-
-
-
-
-
-
-
     
-    long long jn = 0,be = 0;
-    bool ci;
-    int max;
-    int min;
-    while(!coin.empty()) {
-        // john
-        // ci use to represent all the coin is > jn have.
-        ci = 1;
-        max = -1;
-        min = -1;
-
-        for(int i=0; i<coin.size(); i++) {
-            if(jn > coin[i]) {
-                ci = 0;
-                break;
-            }
-        }
-
-        if(!ci) {
-            for(int j=0; j<coin.size(); j++) {
-                if(jn > coin[j]) {
-                    if(max == -1 || coin[j] > coin[max]) {
-                        max = j;
-                    }
-                }
-            }
-        }
-
-        if(max != -1) {
-            cout << "max " << coin[max] << endl;
-            jn+= coin[max];
-            coin.erase(coin.begin() + max);
-        }
-
-        if(ci) {
-            for(int l=0; l<coin.size(); l++) {
-                if(min == -1 || coin[l] < coin[min]) {
-                    min = l;
-                }
-            }
-        }
-
-        if(min != -1) {
-            jn+= coin[min];
-            coin.erase(coin.begin() + min);
-        }
-
-        if(coin.empty()) break;
-
-    // bessie
-
-        ci = 1;
-        max = -1;
-        min = -1;
-
-        for(int b=0; b<coin.size(); b++) {
-            if(be > coin[b]) {
-                ci = 0;
-                break;
-            }
-
-        }
-
-        if(!ci) {
-            for(int e=0; e<coin.size(); e++) {
-                if(be > coin[e]) {
-                    if(max == -1 || coin[e] > coin[max]) {
-                        max = e;
-                    }
-                }
-            }
-        }
-
-        if(max != -1) {
-            cout << "max " << coin[max] << endl;
-            be+= coin[max];
-            coin.erase(coin.begin() + max);
-        }
-
-        if(ci) {
-            for(int s=0; s<coin.size(); s++) {
-                if(min == -1 || coin[s] < coin[min]) {
-                    min = s;
-                }
-            }
-        }
-
-        if(min != -1) {
-            be+= coin[min];
-            coin.erase(coin.begin() + min);
-        }
-
-
-    }
-
-    cout << jn << ' ' << be << ' ' << endl;
     
 }
+*/
