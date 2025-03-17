@@ -3,20 +3,26 @@
 #include <vector>
 #include <algorithm>
 
-double rev_dou(std::string str) {
-  double nums1 = stod(str);
-  str = std::to_string(nums1);
+std::string rev_dou(std::string str) {
   std::string nums = str.substr(0, str.find('.'));
   std::string decs = str.substr(str.find('.')+1);
+
   std::reverse(nums.begin(), nums.end());
-  std::reverse(decs.begin(), decs.end());
-  double decs_= stod(decs);
-  double nums_ = stod(nums);
-  while(decs_ > 1) {
-    decs_ /=10;
+  while(nums.length() > 1 && nums[0] == '0') {
+    nums.erase(0, 1);
   }
 
-  return nums_ + decs_;
+
+  std::reverse(decs.begin(), decs.end());
+  while (decs.size() > 1 && decs.back() == '0') {
+    decs.pop_back();
+  }
+
+  if(decs.empty()) {
+    return nums + "." + "0";
+  }
+
+  return nums + "." + decs;
 }
 
 std::string rev_fri(std::string str) {
@@ -24,7 +30,8 @@ std::string rev_fri(std::string str) {
   std::string dtor = str.substr(str.find('/')+1);
   std::reverse(ntor.begin(), ntor.end());
   std::reverse(dtor.begin(), dtor.end());
-  int ntor_ = stoi(ntor);
+  //do not transfrom the type like this, if we encounter very large number, this not always work.
+  int ntor_ = stoi(ntor); 
   int dtor_ = stoi(dtor);
   return std::to_string(ntor_) + "/" + std::to_string(dtor_);
 }
@@ -32,8 +39,10 @@ std::string rev_fri(std::string str) {
 std::string rev_ptg(std::string str) {
   std::string nums = str.substr(0,str.find('%'));
   std::reverse(nums.begin(), nums.end());
-  int nums_ = stoi(nums);
-  return std::to_string(nums_) + "%";
+  while(nums.length() > 1 && nums[0] == '0') {
+    nums.erase(0, 1);
+  }
+  return nums + "%";
 }
 
 int main() {
@@ -48,6 +57,9 @@ int main() {
     std::cout << rev_ptg(s) << std::endl;
   } else {
     std::reverse(for_i.begin(), for_i.end());
-    std::cout << stoi(for_i) << std::endl;
+    while(for_i.length() > 1 && for_i[0] == '0') {
+      for_i.erase(0, 1);
+    }
+    std::cout << for_i << std::endl;
   }
 }
