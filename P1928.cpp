@@ -5,6 +5,13 @@ using namespace std;
 
 string code()
 {
+  /*
+  1. encode the string, than add it D into string
+  2. return string, after finsih encoding,
+  which mean if the string have no [] than we return
+  3. [ -> find D, than recursive the center [S],
+    ] -> return s
+  */
   char c;
   string s ;
   while(cin >> c) {
